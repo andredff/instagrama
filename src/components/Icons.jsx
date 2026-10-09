@@ -55,3 +55,9 @@ export const Close = ({ size = 22 }) => (
 export const Menu = ({ size = 24 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" {...base}><path d="M4 7h16M4 12h16M4 17h16" /></svg>
 );
+export const Shield = ({ size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...base}><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" /><path d="M9 12l2 2 4-4" /></svg>
+);
+export const External = ({ size = 14 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" {...base}><path d="M14 4h6v6" /><path d="M20 4l-9 9" /><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" /></svg>
+);

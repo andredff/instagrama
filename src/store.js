@@ -1,7 +1,8 @@
 import { useEffect, useReducer } from 'react';
 import { SEED_POSTS, ME } from './data.js';
 
-const KEY = 'instagrama:v1';
+// v3: posts apontam para checagens reais (checkId), com os boatos da eleição de 2026.
+const KEY = 'instagrama:v3';
 
 const initial = () => ({
   posts: SEED_POSTS.map((p) => ({ ...p, createdAt: Date.now() - p.minutesAgo * 60000 })),

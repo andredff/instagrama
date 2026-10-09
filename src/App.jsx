@@ -8,6 +8,7 @@ import Compose from './screens/Compose.jsx';
 import Profile from './screens/Profile.jsx';
 import Search from './screens/Search.jsx';
 import Notifications from './screens/Notifications.jsx';
+import FactCheck from './screens/FactCheck.jsx';
 
 const TABS = ['feed', 'search', 'compose', 'notifications', 'profile'];
 
@@ -35,11 +36,12 @@ export default function App() {
   const back = () => setStack((s) => (s.length > 1 ? s.slice(0, -1) : s));
   const openPost = (id) => push({ name: 'post', id });
   const openProfile = (handle) => push({ name: 'profile', handle });
+  const openChecks = () => push({ name: 'factcheck' });
 
   useEffect(() => { scroller.current?.scrollTo(0, 0); }, [stack]);
 
   const tab = TABS.includes(current.name) && stack.length === 1 ? current.name : stack[0].name;
-  const common = { state, dispatch, go, openPost, openProfile, toast, back };
+  const common = { state, dispatch, go, openPost, openProfile, openChecks, toast, back };
 
   let view;
   switch (current.name) {
@@ -58,6 +60,9 @@ export default function App() {
     case 'notifications':
       view = <Notifications {...common} />;
       break;
+    case 'factcheck':
+      view = <FactCheck {...common} />;
+      break;
     default:
       view = <Feed {...common} unread={unread} />;
   }
@@ -72,7 +77,7 @@ export default function App() {
         <Toast text={toastText} />
       </div>
       <p className="disclaimer">
-        Instagrama é uma sátira. Os perfis são inventados e as manchetes são boatos reais já desmentidos por checadores — todos marcados como FALSO.
+        Instagrama é uma sátira. Os perfis são inventados; os boatos são reais, já foram desmentidos por agências de checagem e cada um leva à checagem original. Imagens: reprodução das agências.
       </p>
     </div>
   );

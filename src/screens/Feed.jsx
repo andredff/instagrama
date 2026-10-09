@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { STORIES, USERS } from '../data.js';
 import { Avatar } from '../components/Common.jsx';
-import { BellLogo, Horn, Chat, Close } from '../components/Icons.jsx';
+import { BellLogo, Horn, Chat, Close, Shield } from '../components/Icons.jsx';
 import PostCard from '../components/PostCard.jsx';
 
-export default function Feed({ state, dispatch, go, openPost, openProfile, toast, unread }) {
+export default function Feed({ state, dispatch, go, openPost, openProfile, openChecks, toast, unread }) {
   const [story, setStory] = useState(null);
   return (
     <div className="screen">
@@ -14,6 +14,9 @@ export default function Feed({ state, dispatch, go, openPost, openProfile, toast
           <span className="brand__name">Insta<span>grama</span></span>
         </div>
         <div className="topbar__actions">
+          <button className="icon-btn" aria-label="Verdade no pasto (checagens)" onClick={openChecks}>
+            <Shield />
+          </button>
           <button className="icon-btn" aria-label="Berrantes (notificações)" onClick={() => go('notifications')}>
             <Horn />
             {unread ? <span className="dot dot--top" /> : null}
@@ -52,7 +55,10 @@ export default function Feed({ state, dispatch, go, openPost, openProfile, toast
             toast={toast}
           />
         ))}
-        <p className="end-note">Você viu tudo. Agora encaminhe sem ler.</p>
+        <p className="end-note">
+          Você viu tudo. Agora encaminhe sem ler.{' '}
+          <button className="link-inline" onClick={openChecks}>Ou leia o que os checadores disseram.</button>
+        </p>
       </div>
 
       {story !== null && <StoryViewer index={story} setIndex={setStory} />}

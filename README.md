@@ -13,6 +13,20 @@ npm run build      # gera dist/ para hospedar
 npm run build:single  # gera dist-single/index.html (um arquivo só)
 ```
 
+## Publicar na Vercel
+
+1. Coloque estes arquivos na **raiz** do repositório no GitHub: o
+   `package.json` precisa ficar no primeiro nível, e não dentro de uma
+   subpasta.
+2. Na Vercel: **Add New → Project**, importe o repositório e clique em
+   **Deploy**. O `vercel.json` já define o framework (Vite), o build
+   (`npm run build`) e a pasta de saída (`dist`).
+3. Se o código estiver dentro de uma subpasta, vá em **Settings → General →
+   Root Directory** e aponte para ela.
+
+Também dá para publicar pelo terminal: `npm i -g vercel` e depois `vercel`
+dentro da pasta do projeto.
+
 ## O que funciona
 
 - **Pasto (feed):** posts com Mugir (curtir), Ruminar (comentar), Espalhar
@@ -43,4 +57,3 @@ src/
 Não há backend: para virar uma rede de verdade, troque `store.js` por chamadas
 a uma API (por exemplo Supabase ou Firebase) mantendo as mesmas ações
 (`like`, `save`, `share`, `comment`, `publish`).
-# instagrama
